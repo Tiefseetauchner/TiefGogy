@@ -1,4 +1,5 @@
 #import "../core/i18n.typ": i18n
+#import "../core/common.typ": grid-stroke
 
 #let tension-log(
   start: 6,
@@ -9,8 +10,6 @@
   danger-at: 70,
   date: none,
 ) = {
-  let grid-stroke = (paint: luma(70%), thickness: 0.8pt)
-
   let hour-cells(start, count) = {
     let hours = range(count)
     hours.map(h => {

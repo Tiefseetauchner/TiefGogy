@@ -19,7 +19,19 @@
     week-from: "Week from",
     week-to-only-to: "to",
     week-to: "Week to",
-    medication: "Medication"
+    medication: "Medication",
+    what-happened: "What happened?",
+    positive-events: "Comforting events",
+    negative-events: "Discomforting events",
+    weekdays: (
+      monday: "Monday",
+      tuesday: "Tuesday",
+      wednesday: "Wednesday",
+      thursday: "Thursday",
+      friday: "Friday",
+      saturday: "Saturday",
+      sunday: "Sunday",
+    ),
   )
 
   let i18n-de-de = (
@@ -31,7 +43,19 @@
     week-from: "Woche vom",
     week-to-only-to: "bis",
     week-to: "Woche bis",
-    medication: "Medikation"
+    medication: "Medikation",
+    what-happened: "Was ist passiert?",
+    positive-events: "Angenehme Ereignisse",
+    negative-events: "Unangenehme Ereignisse",
+    weekdays: (
+      monday: "Montag",
+      tuesday: "Dienstag",
+      wednesday: "Mittwoch",
+      thursday: "Donnerstag",
+      friday: "Freitag",
+      saturday: "Samstag",
+      sunday: "Sonntag",
+    ),
   )
 
   let sel-lang = lang.final()

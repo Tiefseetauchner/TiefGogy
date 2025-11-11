@@ -1,17 +1,24 @@
 #import "../core/i18n.typ": i18n
+#import "../core/common.typ": grid-stroke
 
-
-
-#let row-cells(label, column-count) = {
+#let row-cells(label, column-count, align: left + horizon, fill: none) = {
   (
-    table.cell(
-      stroke: grid-stroke,
-      inset: (x: 2pt, y: 4pt),
-    )[
-      #set text(size: 7.5pt, weight: if is-danger { "bold" } else { "regular" })
-      #s
+    table.cell()[
+      #label
     ],
-    ..range(column-count).map(_ => table.cell(fill: fill, stroke: grid-stroke)[]),
+    ..range(column-count).map(_ => table.cell()[]),
+  )
+}
+
+#let weekend-cells(align: left + horizon, fill: none) = {
+  (
+    table.cell(align: align, fill: fill, i18n().weekdays.monday),
+    table.cell(align: align, fill: fill, i18n().weekdays.tuesday),
+    table.cell(align: align, fill: fill, i18n().weekdays.wednesday),
+    table.cell(align: align, fill: fill, i18n().weekdays.thursday),
+    table.cell(align: align, fill: fill, i18n().weekdays.friday),
+    table.cell(align: align, fill: fill, i18n().weekdays.saturday),
+    table.cell(align: align, fill: fill, i18n().weekdays.sunday),
   )
 }
 
@@ -22,9 +29,18 @@
     ][
       #i18n().medication:
     ]
+    {
+      set text(size: 7.5pt)
+      table(
+        stroke: grid-stroke,
+        columns: (1fr, 1fr, 1fr, 1fr, 1fr, 1fr, 1fr, 1fr),
+        table.header(i18n().what-happened, ..weekend-cells()),
+        ..row-cells(i18n().positive-events, 7),
+        ..row-cells(i18n().negative-events, 7),
+        table.cell(colspan: 8)[
+          #grid(columns: (1fr, 1fr))
+        ],
+      )
+    }
   }
-  table(
-    colums: 8,
-    ..row-cells(i18n().)
-  )
 }
