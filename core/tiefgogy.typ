@@ -26,7 +26,7 @@
 
     table(
       stroke: none,
-      columns: (70%, 30%),
+      columns: if name == none { auto } else { (70%, 30%) }, 
       inset: 0pt,
       row-gutter: 5pt,
       table.cell(
@@ -34,14 +34,13 @@
           #set text(size: 2em)
           #title
         ],
-        colspan: if name == none { 2 } else { 1 },
       ),
       if type(name) == str {
         align(left + bottom)[#i18n().name: #text(weight: "light")[#name]]
       } else if name == true {
         align(left + bottom)[#i18n().name:]
       },
-      table.cell(colspan: 2, line(length: 100%)),
+      table.cell(colspan: if name == none { 1 } else { 2 }, line(length: 100%)),
     )
 
     body
