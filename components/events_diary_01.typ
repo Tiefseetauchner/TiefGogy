@@ -3,10 +3,10 @@
 
 #let row-cells(label, column-count, align: left + horizon, fill: none) = {
   (
-    table.cell()[
+    table.cell(align: align, fill: fill)[
       #label
     ],
-    ..range(column-count).map(_ => table.cell()[]),
+    ..range(column-count).map(_ => table.cell(inset: (y: 25pt), fill: fill)[]),
   )
 }
 
@@ -22,7 +22,7 @@
   )
 }
 
-#let diary-log() = {
+#let events-diary() = {
   context {
     grid(columns: (1fr, 1fr))[
       #i18n().week-from #h(30pt) #i18n().week-to-only-to
@@ -34,11 +34,14 @@
       table(
         stroke: grid-stroke,
         columns: (1fr, 1fr, 1fr, 1fr, 1fr, 1fr, 1fr, 1fr),
-        table.header(i18n().what-happened, ..weekend-cells()),
+        table.header(i18n().what-happened, ..weekend-cells(align: center + horizon)),
         ..row-cells(i18n().positive-events, 7),
         ..row-cells(i18n().negative-events, 7),
-        table.cell(colspan: 8)[
-          #grid(columns: (1fr, 1fr))
+        table.cell(colspan: 4, inset: (y: 10pt))[
+          #i18n().most-positive-event:
+        ],
+        table.cell(colspan: 4, inset: (y: 10pt))[
+          #i18n().most-negative-event:
         ],
       )
     }
