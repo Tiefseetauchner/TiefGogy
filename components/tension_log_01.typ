@@ -1,10 +1,13 @@
-#let stressprotocoll(
+#import "../core/i18n.typ": i18n
+
+#let tension-log(
   start: 6,
   end: 2,
   scale-max: 100,
   scale-min: 0,
   scale-step: 10,
   danger-at: 70,
+  date: none,
 ) = {
   let grid-stroke = (paint: luma(70%), thickness: 0.8pt)
 
@@ -45,12 +48,15 @@
     range(max, -1, step: -step)
   }
 
-  let header() = grid(
-    columns: (70%, 30%),
-  )[][
-    Datum:
-    #line(length: 100%)
-  ]
+
+  let header() = context {
+    grid(
+      columns: (70%, 30%),
+    )[][
+      #i18n().date: #{ if type(date) == datetime { text(size: 9pt, weight: "light")[#date.display("[day].[month].[year]")] } }
+      #line(length: 100%)
+    ]
+  }
 
   box()[
     #header()

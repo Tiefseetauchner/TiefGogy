@@ -13,11 +13,17 @@
   let i18n-en-us = (
     page: "Page",
     name: "Name",
+    date: "Date",
+    notes: "Notes",
+    tension-log: "Tension log",
   )
 
   let i18n-de-de = (
     page: "Seite",
     name: "Name",
+    date: "Datum",
+    notes: "Notizen",
+    tension-log: "Spannungsprotokoll",
   )
 
   let sel-lang = lang.final()
