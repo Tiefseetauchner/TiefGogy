@@ -16,6 +16,10 @@
     date: "Date",
     notes: "Notes",
     tension-log: "Tension log",
+    week-from: "Week from",
+    week-to-only-to: "to",
+    week-to: "Week to",
+    medication: "Medication"
   )
 
   let i18n-de-de = (
@@ -24,6 +28,10 @@
     date: "Datum",
     notes: "Notizen",
     tension-log: "Spannungsprotokoll",
+    week-from: "Woche vom",
+    week-to-only-to: "bis",
+    week-to: "Woche bis",
+    medication: "Medikation"
   )
 
   let sel-lang = lang.final()
