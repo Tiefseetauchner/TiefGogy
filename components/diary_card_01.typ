@@ -1,5 +1,5 @@
 #import "../core/i18n.typ": i18n
-#import "../core/common.typ": grid-stroke, row-cells, split-row-cells, weekdays-short-table
+#import "../core/common.typ": grid-stroke, weekdays-short-table
 
 #let diary-card() = {
   context {
