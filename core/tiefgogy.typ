@@ -4,9 +4,16 @@
   title: none,
   name: none,
   page-counter: true,
+  author: none,
   body,
 ) = {
   context {
+    set document(
+      title: title,
+      author: "Template: Lena Tauchner <tiefseetauchner@lukechriswalker.at>"
+        + if author != none { "Compiled by: " + author },
+    )
+
     set text(font: "Unbounded", hyphenate: true)
     set page(
       margin: 24pt,
@@ -26,7 +33,7 @@
 
     table(
       stroke: none,
-      columns: if name == none { auto } else { (70%, 30%) }, 
+      columns: if name == none { auto } else { (70%, 30%) },
       inset: 0pt,
       row-gutter: 5pt,
       table.cell(

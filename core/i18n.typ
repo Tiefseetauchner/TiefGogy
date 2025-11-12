@@ -14,6 +14,7 @@
     page: "Page",
     name: "Name",
     date: "Date",
+    condition: "Condition",
     notes: "Notes",
     tension-log: "Tension log",
     week-from: "Week from",
@@ -34,12 +35,22 @@
       saturday: "Saturday",
       sunday: "Sunday",
     ),
+    weekdays-short: (
+      monday: "Mo",
+      tuesday: "Tu",
+      wednesday: "We",
+      thursday: "Th",
+      friday: "Fr",
+      saturday: "Sa",
+      sunday: "Su",
+    ),
   )
 
   let i18n-de-de = (
     page: "Seite",
     name: "Name",
     date: "Datum",
+    condition: "Befinden",
     notes: "Notizen",
     tension-log: "Spannungsprotokoll",
     week-from: "Woche vom",
@@ -59,6 +70,15 @@
       friday: "Freitag",
       saturday: "Samstag",
       sunday: "Sonntag",
+    ),
+    weekdays-short: (
+      monday: "Mo",
+      tuesday: "Di",
+      wednesday: "Mi",
+      thursday: "Do",
+      friday: "Fr",
+      saturday: "Sa",
+      sunday: "So",
     ),
   )
 
