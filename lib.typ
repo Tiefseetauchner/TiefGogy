@@ -1,4 +1,5 @@
 // Note: Only import wanted components to not clutter the export
+// TODO: Feelings wheel
 
 #import "core/i18n.typ": languages, select-language
 #import "core/tiefgogy.typ": tiefgogy

@@ -2,13 +2,13 @@
 
 #let grid-stroke = (paint: luma(70%), thickness: 0.8pt)
 
-#let row-cells(label, column-count, align: left + horizon, fill: none, height: none) = {
+#let row-cells(label, column-count, alignment: left + horizon, fill: none, height: none) = {
   if height == none {
     height = 25pt
   }
 
   (
-    table.cell(align: align, fill: fill)[
+    table.cell(align: alignment, fill: fill)[
       #label
     ],
     ..range(column-count).map(_ => table.cell(inset: (y: height / 2), fill: fill)[]),
@@ -24,55 +24,73 @@
   )
 }
 
-#let weekdays-cells(align: left + horizon, fill: none) = {
+#let weekdays-cells(alignment: left + horizon, fill: none) = {
   (
-    table.cell(align: align, fill: fill, i18n().weekdays.monday),
-    table.cell(align: align, fill: fill, i18n().weekdays.tuesday),
-    table.cell(align: align, fill: fill, i18n().weekdays.wednesday),
-    table.cell(align: align, fill: fill, i18n().weekdays.thursday),
-    table.cell(align: align, fill: fill, i18n().weekdays.friday),
-    table.cell(align: align, fill: fill, i18n().weekdays.saturday),
-    table.cell(align: align, fill: fill, i18n().weekdays.sunday),
+    table.cell(align: alignment, fill: fill, i18n().weekdays.monday),
+    table.cell(align: alignment, fill: fill, i18n().weekdays.tuesday),
+    table.cell(align: alignment, fill: fill, i18n().weekdays.wednesday),
+    table.cell(align: alignment, fill: fill, i18n().weekdays.thursday),
+    table.cell(align: alignment, fill: fill, i18n().weekdays.friday),
+    table.cell(align: alignment, fill: fill, i18n().weekdays.saturday),
+    table.cell(align: alignment, fill: fill, i18n().weekdays.sunday),
   )
 }
 
-#let weekdays-short-cells(align: left + horizon, fill: none) = {
+#let weekdays-short-cells(alignment: left + horizon, fill: none) = {
   (
-    table.cell(align: align, fill: fill, i18n().weekdays-short.monday),
-    table.cell(align: align, fill: fill, i18n().weekdays-short.tuesday),
-    table.cell(align: align, fill: fill, i18n().weekdays-short.wednesday),
-    table.cell(align: align, fill: fill, i18n().weekdays-short.thursday),
-    table.cell(align: align, fill: fill, i18n().weekdays-short.friday),
-    table.cell(align: align, fill: fill, i18n().weekdays-short.saturday),
-    table.cell(align: align, fill: fill, i18n().weekdays-short.sunday),
+    table.cell(align: alignment, fill: fill, i18n().weekdays-short.monday),
+    table.cell(align: alignment, fill: fill, i18n().weekdays-short.tuesday),
+    table.cell(align: alignment, fill: fill, i18n().weekdays-short.wednesday),
+    table.cell(align: alignment, fill: fill, i18n().weekdays-short.thursday),
+    table.cell(align: alignment, fill: fill, i18n().weekdays-short.friday),
+    table.cell(align: alignment, fill: fill, i18n().weekdays-short.saturday),
+    table.cell(align: alignment, fill: fill, i18n().weekdays-short.sunday),
   )
 }
 
-#let weekdays-table(table-heading: none, labels: (), row-height: none) = {
+#let weekdays-table(
+  short-weekend-names: false,
+  table-heading: none,
+  labels: (),
+  row-height: none,
+  first-col-width: 50%,
+) = {
   set text(size: 7.5pt)
 
   table(
-    columns: (1fr, 1fr, 1fr, 1fr, 1fr, 1fr, 1fr, 1fr),
+    columns: (first-col-width, 1fr, 1fr, 1fr, 1fr, 1fr, 1fr, 1fr),
     stroke: grid-stroke,
-    table.header(table-heading, ..weekdays-cells(align: center + horizon)),
+    table.header(
+      table-heading,
+      ..if short-weekend-names {
+        weekdays-short-cells(alignment: center + horizon)
+      } else {
+        weekdays-cells(alignment: center + horizon)
+      },
+    ),
     ..labels
       .map(label => {
-        row-cells(label, 7, height: row-height)
-      })
-      .flatten(),
-  )
-}
-
-#let weekdays-short-table(table-heading: none, labels: (), row-height: none) = {
-  set text(size: 7.5pt)
-
-  table(
-    columns: (50%, 1fr, 1fr, 1fr, 1fr, 1fr, 1fr, 1fr),
-    stroke: grid-stroke,
-    table.header(table-heading, ..weekdays-short-cells(align: center + horizon)),
-    ..labels
-      .map(label => {
-        row-cells(label, 7, height: row-height)
+        if type(label) == dictionary and label.at("settings", default: none) != none {
+          if label.settings.at("split", default: false) {
+            split-row-cells(
+              label.content,
+              7,
+              height: label.settings.at("height", default: row-height),
+              alignment: label.settings.at("alignment", default: left + horizon),
+              fill: label.settings.at("fill", default: none),
+            )
+          } else {
+            row-cells(
+              label.content,
+              7,
+              height: label.settings.at("height", default: row-height),
+              alignment: label.settings.at("alignment", default: left + horizon),
+              fill: label.settings.at("fill", default: none),
+            )
+          }
+        } else {
+          row-cells(label, 7, height: row-height)
+        }
       })
       .flatten(),
   )

@@ -10,6 +10,7 @@
     ]
     {
       weekdays-table(
+        first-col-width: 1fr,
         labels: (
           i18n().positive-events,
           i18n().negative-events,
