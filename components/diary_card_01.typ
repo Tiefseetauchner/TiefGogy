@@ -1,6 +1,8 @@
 #import "../core/i18n.typ": i18n
 #import "../core/common.typ": grid-stroke, weekdays-table
 
+/// Creates a simple diary card with common questions about different relevant areas of life
+/// to mark over one week.
 #let diary-card(problematic-behaviors: ()) = {
   context {
     {

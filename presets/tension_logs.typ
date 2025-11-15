@@ -3,6 +3,7 @@
 #import "../core/i18n.typ": i18n
 #import "../core/tiefgogy.typ": tiefgogy
 
+/// Preset to generate a tension log page.
 #let preset-tension-log(
   count: 2,
   show-notes: true,
@@ -17,7 +18,8 @@
   start-date: none,
 ) = {
   context {
-    show: tiefgogy.with(title: i18n().tension-log, name: name, page-counter: false)
+    show: tiefgogy.setup.with(show-name: name, page-counter: false)
+    (tiefgogy.title)(i18n().tension-log)
 
     for i in range(count) {
       let date = if type(start-date) == datetime {

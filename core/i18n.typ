@@ -1,3 +1,4 @@
+/// List of available languages.
 #let languages = (
   english-us: "en-us",
   deutsch-de: "de-de",
@@ -5,6 +6,7 @@
 
 #let lang = state("language-state", languages.english-us)
 
+/// Selects a language to use in the document. Select from `languages`.
 #let select-language(language) = {
   lang.update(language)
 }

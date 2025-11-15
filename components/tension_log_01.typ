@@ -1,6 +1,7 @@
 #import "../core/i18n.typ": i18n
 #import "../core/common.typ": grid-stroke
 
+/// A tension log logging the tension over a day.
 #let tension-log(
   start: 6,
   end: 2,

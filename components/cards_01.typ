@@ -1,3 +1,4 @@
+/// Card that can display content in a ordered way
 #let card(
   title,
   content,

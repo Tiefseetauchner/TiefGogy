@@ -1,7 +1,39 @@
 #import "i18n.typ": i18n
 
+#let title-text(
+  title,
+  show-name: none,
+) = {
+  table(
+    stroke: none,
+    columns: if show-name == none { auto } else { (70%, 30%) },
+    inset: 0pt,
+    row-gutter: 5pt,
+    table.cell(
+      [
+        #set text(size: 2em)
+        #title
+      ],
+    ),
+    if type(show-name) == str {
+      align(left + bottom)[#i18n().name: #text(weight: "light")[#show-name]]
+    } else if show-name == true {
+      align(left + bottom)[#i18n().name:]
+    },
+    table.cell(colspan: if show-name == none { 1 } else { 2 }, line(length: 100%)),
+  )
+}
 
-
+/// Base methods of tiefgogy
+///
+/// - `setup(title: none, show-name: false, page-counter: true, author: none, body)`: Sets up TiefGogy
+///   - `title`: Generates a title page and sets the title of the document
+///   - `show-name`: Whether the name field should be shown with headings
+///   - `page-counter`: Whether a page counter should be shown
+///   - `author`: Sets the 'Compiled by:' of the output document
+/// - `title(title, show-name: none)`: Generates a title if headings of level one are not desired
+///   - `title`: The title to be shown (positional)
+///   - `show-name`: Whether to show a name
 #let tiefgogy = (
   setup: (
     title: none,
@@ -49,25 +81,7 @@
       show heading: it => {
         if it.level == 1 {
           set text(size: 12pt)
-          table(
-            stroke: none,
-            columns: if show-name == none { auto } else { (70%, 30%) },
-            inset: 0pt,
-            row-gutter: 5pt,
-            table.cell(
-              [
-                #set text(size: 2em)
-                #it
-              ],
-            ),
-            if type(show-name) == str {
-              align(left + bottom)[#i18n().name: #text(weight: "light")[#show-name]]
-            } else if show-name == true {
-              align(left + bottom)[#i18n().name:]
-            },
-            table.cell(colspan: if show-name == none { 1 } else { 2 }, line(length: 100%)),
-            v(3pt)
-          )
+          title-text(it, show-name: show-name)
           return
         }
 
@@ -81,23 +95,6 @@
     title,
     show-name: none,
   ) => {
-    table(
-      stroke: none,
-      columns: if show-name == none { auto } else { (70%, 30%) },
-      inset: 0pt,
-      row-gutter: 5pt,
-      table.cell(
-        [
-          #set text(size: 2em)
-          #title
-        ],
-      ),
-      if type(show-name) == str {
-        align(left + bottom)[#i18n().name: #text(weight: "light")[#show-name]]
-      } else if show-name == true {
-        align(left + bottom)[#i18n().name:]
-      },
-      table.cell(colspan: if show-name == none { 1 } else { 2 }, line(length: 100%)),
-    )
+    title-text(title, show-name: show-name)
   },
 )

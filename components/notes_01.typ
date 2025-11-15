@@ -1,5 +1,6 @@
 #import "../core/i18n.typ": i18n
 
+/// Note lines to fill in
 #let notes(lines) = {
   text(10pt, weight: "bold")[#i18n().notes]
   v(4pt)

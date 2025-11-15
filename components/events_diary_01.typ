@@ -1,6 +1,7 @@
 #import "../core/i18n.typ": i18n
 #import "../core/common.typ": grid-stroke, row-cells, weekdays-table
 
+/// An events diary logging good and bad events over one week.
 #let events-diary(show-best-and-worst-event: true) = {
   context {
     grid(columns: (1fr, 1fr))[
