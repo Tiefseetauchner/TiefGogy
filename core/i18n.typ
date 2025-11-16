@@ -62,7 +62,7 @@
         categorizing-of-emotions: [*Categorizing of own emotions?* (from 0 = not at all to 5 = very well)],
         access-to-emotions: [*Access to own emotions?* (from 0 = not at all to 5 = very possible)],
         did-eat: [*Ate something?* (Yes/No)],
-        enough-fluids: [*Sufficient hydration?* (In fl. ounces)],
+        enough-fluids: [*Sufficient hydration?* (In cups)],
         showered-brushed-teeth: [*Showered?* | *Brushed teeth?* (Yes/No)],
         pressure: [Pressure to act? (from 0 = not at all to 5 = extremely strong)],
         acted-upon: [Did act? (Yes/No)],
