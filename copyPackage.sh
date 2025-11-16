@@ -20,7 +20,7 @@ REQUIRED_FILES=(
     "template/"
     "components/"
     "core/"
-    "layout/"
+    "presets/"
 )
 
 for item in "${REQUIRED_FILES[@]}"; do

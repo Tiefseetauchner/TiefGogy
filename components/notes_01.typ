@@ -2,12 +2,14 @@
 
 /// Note lines to fill in
 #let notes(lines) = {
-  text(10pt, weight: "bold")[#i18n().notes]
-  v(4pt)
+  context {
+    text(10pt, weight: "bold")[#i18n().notes]
+    v(4pt)
 
-  for _ in range(lines) {
-    line(length: 100%, stroke: (paint: luma(70%), thickness: 0.5pt))
+    for _ in range(lines) {
+      line(length: 100%, stroke: (paint: luma(70%), thickness: 0.5pt))
 
-    v(9pt)
+      v(9pt)
+    }
   }
 }
