@@ -7,7 +7,7 @@
   context {
     weekdays-table(
       short-weekend-names: true,
-      table-heading: i18n().dc1.headings.well-being,
+      table-heading: i18n().dc1.headings.mood,
       row-height: 0pt,
       labels: (
         i18n().dc1.questions.trust-in-therapy,

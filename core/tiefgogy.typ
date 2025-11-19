@@ -28,6 +28,7 @@
 ///
 /// - `setup(title: none, show-name: false, page-counter: true, author: none, body)`: Sets up TiefGogy
 ///   - `title`: Generates a title page and sets the title of the document
+///   - `show-title-page`: Whether or not to display a title page
 ///   - `show-name`: Whether the name field should be shown with headings
 ///   - `page-counter`: Whether a page counter should be shown
 ///   - `author`: Sets the 'Compiled by:' of the output document
@@ -37,18 +38,22 @@
 #let tiefgogy = (
   setup: (
     title: none,
+    show-title-page: false,
+    author: none,
     show-name: false,
     page-counter: true,
-    author: none,
+    set-document-properties: true,
     body,
   ) => {
     context {
-      set document(
-        title: title,
-        author: "Template: Lena Tauchner <tiefseetauchner@lukechriswalker.at>"
-          + if author != none { "Compiled by: " + author },
-      )
-
+      if set-document-properties {
+        set document(
+          title: title,
+          author: i18n().meta.template
+            + ": Lena Tauchner <tiefseetauchner@lukechriswalker.at>"
+            + if author != none { i18n().meta.compiled-by + ": " + author },
+        )
+      }
       set text(font: "Unbounded", hyphenate: true)
       set page(
         margin: 24pt,
@@ -66,13 +71,13 @@
         ],
       )
 
-      if title != none {
+      if show-title-page and title != none {
         align(horizon)[
           #text(size: 68pt)[
             #title
           ]
           #v(-40pt)
-          #if author != none { [by #author] }
+          #if author != none { [#i18n().meta.by #author] }
         ]
 
         pagebreak()
@@ -95,6 +100,8 @@
     title,
     show-name: none,
   ) => {
-    title-text(title, show-name: show-name)
+    context {
+      title-text(title, show-name: show-name)
+    }
   },
 )

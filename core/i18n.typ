@@ -18,6 +18,7 @@
   condition: "Condition",
   notes: "Notes",
   tension-log: "Tension log",
+  diary-card: "Diary card",
   week-from: "Week from",
   week-to-only-to: "to",
   week-to: "Week to",
@@ -28,6 +29,11 @@
   negative-events: "Discomforting events",
   most-negative-event: "Most discomforting event",
   self-harm: "Self harm",
+  meta: (
+    template: "Template",
+    compiled-by: "Compiled by",
+    by: "by",
+  ),
   weekdays: (
     monday: "Monday",
     tuesday: "Tuesday",
@@ -104,6 +110,7 @@
   condition: "Befinden",
   notes: "Notizen",
   tension-log: "Spannungsprotokoll",
+  diary-card: "Tagebuchkarte",
   week-from: "Woche vom",
   week-to-only-to: "bis",
   week-to: "Woche bis",
@@ -114,6 +121,11 @@
   negative-events: "Unangenehme Ereignisse",
   most-negative-event: "Unangenehmstes Event",
   self-harm: "Selbstverletzung",
+  meta: (
+    template: "Vorlage",
+    compiled-by: "Zusammengestellt von",
+    by: "von",
+  ),
   weekdays: (
     monday: "Montag",
     tuesday: "Dienstag",

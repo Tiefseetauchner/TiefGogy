@@ -16,4 +16,6 @@ magick -size 3010x2139 canvas:none \
   \( test/page-0.png  \( +clone -background black -shadow $SHADOW \) +swap -background none -layers merge +repage \) -geometry +0+0     -compose over -composite \
   cover.png
 
+cp "test/page-2.png" "thumbnail.png"
+
 echo "Created cover.png"

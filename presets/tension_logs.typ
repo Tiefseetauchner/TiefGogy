@@ -16,10 +16,16 @@
   scale-step: 10,
   danger-at: 70,
   start-date: none,
+  set-document-properties: true,
 ) = {
   context {
-    show: tiefgogy.setup.with(show-name: name, page-counter: false)
-    (tiefgogy.title)(i18n().tension-log)
+    show: tiefgogy.setup.with(
+      title: i18n().tension-log,
+      set-document-properties: set-document-properties,
+      show-name: name,
+      page-counter: false,
+    )
+    (tiefgogy.title)(i18n().tension-log, show-name: name)
 
     for i in range(count) {
       let date = if type(start-date) == datetime {

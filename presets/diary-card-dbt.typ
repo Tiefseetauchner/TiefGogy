@@ -1,0 +1,23 @@
+#import "../core/tiefgogy.typ": tiefgogy
+#import "../components/events_diary_01.typ": events-diary
+#import "../components/diary_card_02.typ": diary-card-dbt
+#import "../core/i18n.typ": i18n
+
+#let preset-diary-card-dbt(
+  problematic-behaviors: 2,
+  name: true,
+  set-document-properties: true,
+) = {
+  context {
+    set page(flipped: true)
+    show: tiefgogy.setup.with(
+      title: i18n().diary-card,
+      set-document-properties: set-document-properties,
+      show-name: name,
+      page-counter: false,
+    )
+    (tiefgogy.title)(i18n().diary-card, show-name: name)
+    events-diary(table-height: 40pt)
+    diary-card-dbt(problematic-behaviors: problematic-behaviors)
+  }
+}

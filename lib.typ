@@ -10,3 +10,5 @@
 #import "components/tension_log_01.typ": tension-log
 #import "components/cards_01.typ": card
 #import "presets/tension_logs.typ": preset-tension-log
+#import "presets/diary-card.typ": preset-diary-card
+#import "presets/diary-card-dbt.typ": preset-diary-card-dbt
