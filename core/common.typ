@@ -61,11 +61,11 @@
     columns: (first-col-width, 1fr, 1fr, 1fr, 1fr, 1fr, 1fr, 1fr),
     stroke: grid-stroke,
     table.header(
-      table-heading,
+      table.cell(fill: luma(90%), table-heading),
       ..if short-weekend-names {
-        weekdays-short-cells(alignment: center + horizon)
+        weekdays-short-cells(fill: luma(90%), alignment: center + horizon)
       } else {
-        weekdays-cells(alignment: center + horizon)
+        weekdays-cells(fill: luma(90%), alignment: center + horizon)
       },
     ),
     ..labels
