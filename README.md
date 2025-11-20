@@ -18,10 +18,12 @@ To import the package manually in your Typst project, use:
 
 ### Presets
 
-Creates a page of tension logs. See [Components](#components) for more information.
+#### `preset-tension-log`
+
+Creates a page of tension logs. See [Components](#tension-log) for more information.
 
 ```typst
-#let preset-tension-log(
+#preset-tension-log(
   count: 2, // How many tension logs to display
   show-notes: true, // Whether to show notes after the tension logs
   notes-lines: 4, // How many lines to display for the notes
@@ -33,6 +35,31 @@ Creates a page of tension logs. See [Components](#components) for more informati
   scale-step: 10, // See components/tension-log
   danger-at: 70, // See components/tension-log
   start-date: none, // The date to start the tension logs at. Counts up for each tension log.
+  set-document-properties: true, // whether to set document properties
+)
+```
+
+#### `preset-diary-card`
+
+Creates a page of a diary card. See [Components](#diary-card) for more information
+
+```typst
+#preset-diary-card(
+  problematic-behaviors: 2, // Either a number or a list of problematic behaviors
+  name: true, // Whether to display a name or, if content, display said name
+  set-document-properties: true, // whether to set document properties
+)
+```
+
+#### `preset-diary-card-dbt`
+
+Creates a page of a dbt style diary card. See [Components](#diary-card-dbt) for more information
+
+```typst
+#preset-diary-card-dbt(
+  problematic-behaviors: 2, // Either a number or a list of problematic behaviors
+  name: true, // Whether to display a name or, if content, display said name
+  set-document-properties: true, // whether to set document properties
 )
 ```
 
@@ -45,6 +72,8 @@ Basic setup is done via tiefgogy.setup:
 #show: tiefgogy.setup.with(
     title: none, // if set, creates a title page and sets the document title
     show-name: false, // if set, displays a name field next to headings of level 1
+    show-title-page: false, // whether the title page should be displayed
+    set-document-properties: true, // whether to set document properties like author and title
     page-counter: true, // if true, will display a page counter in the bottom right corner
     author: none, // if set, will display an author on the title page and set the document author
 )
@@ -70,6 +99,8 @@ Tiefgogy is localized. Currently, deutsch-de and english-us are supported:
 
 ### Components
 
+#### tension-log
+
 `tension-log` creates a tension log to track the amount of inner tension over a day.
 
 ```typst
@@ -84,6 +115,8 @@ Tiefgogy is localized. Currently, deutsch-de and english-us are supported:
 ) 
 ```
 
+#### notes
+
 `notes` displays lines for notes.
 
 ```typst
@@ -91,6 +124,8 @@ Tiefgogy is localized. Currently, deutsch-de and english-us are supported:
     3 // number of lines to display
 )
 ```
+
+#### events-diary
 
 `events-diary` creates a week overview of good and bad events as well as, optionally, a best and worst event line
 
@@ -100,13 +135,27 @@ Tiefgogy is localized. Currently, deutsch-de and english-us are supported:
 )
 ```
 
+#### diary-card
+
 `diary-card` is a function to create a useful diary of feelings and good and bad habits.
 
 ```typst
 #diary-card(
-    problematic-behaviors: () // A list of problematic behaviors to list with pressure to act upon and whether one acted upon the pressure fields
+    problematic-behaviors: () // A number or list of problematic behaviors. none creates a free field
 )
 ```
+
+#### diary-card-dbt
+
+`diary-card` is a function to create a useful diary of feelings and good and bad habits.
+
+```typst
+#diary-card-dbt(
+    problematic-behaviors: () // A number or list of problematic behaviors. none creates a free field
+)
+```
+
+#### card
 
 `card` is a basic card displayed to fill with information.
 

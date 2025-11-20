@@ -9,7 +9,6 @@
   set-document-properties: true,
 ) = {
   context {
-    set page(flipped: true)
     show: tiefgogy.setup.with(
       title: i18n().diary-card,
       set-document-properties: set-document-properties,
